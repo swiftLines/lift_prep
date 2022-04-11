@@ -34,15 +34,20 @@ class User(db.Model, UserMixin):
 class LiftPost(db.Model):
     __tablename__ = 'lift_posts'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    title = db.Column(db.String(140), nullable=False)
-    text = db.Column(db.Text, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    title = db.Column(db.String(32), nullable=False)
+    lift = db.Column(db.Text, nullable=False)
+    sets = db.Column(db.Integer)
+    reps = db.Column(db.Integer)
 
-    def __init__(self, title, text, user_id):
+    def __init__(self, date, title, lift, sets, reps, user_id):
+        self.date = date
         self.title = title
-        self.text = text
+        self.lift = lift
+        self.sets = sets
+        self.reps = reps
         self.user_id = user_id
     
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
+        return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.Title} --- Lift: {self.lift} -- Sets: {self.sets} -- Reps: {self.reps}"
 
