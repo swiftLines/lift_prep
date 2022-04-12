@@ -11,7 +11,7 @@ lift_posts = Blueprint('lift_posts', __name__)
 def create_post():
     form = LiftPostForm()
     if form.validate_on_submit():
-        lift_post = Workout(title=form.title.data, lift=form.lift.data, user_id=current_user.id)
+        lift_post = Workout(date=form.date.data, title=form.title.data, lift=form.lift.data, sets=form.sets.data, reps=form.reps.data, user_id=current_user.id)
         db.session.add(lift_post)
         db.session.commit()
         flash('Lift Post Created')
@@ -35,15 +35,21 @@ def update(lift_post_id):
     form = LiftPostForm()
 
     if form.validate_on_submit():
+        lift_post.date = form.date.data
         lift_post.title = form.title.data
-        lift_post.text = form.text.data
+        lift_post.lift = form.lift.data
+        lift_post.sets = form.sets.data
+        lift_post.reps = form.reps.data
         db.session.commit()
         flash('Lift Post Updated')
         return redirect(url_for('lift_posts.lift_post',lift_post_id=lift_post.id))
 
     elif request.method == 'GET':
+        form.date.data = lift_post.date
         form.title.data = lift_post.title
-        form.text.data = lift_post.text
+        form.lift.data = lift_post.lift
+        form.sets.data = lift_post.sets
+        form.reps.data = lift_post.reps
 
     return render_template('create_post.html',title='Updating',form=form)
 

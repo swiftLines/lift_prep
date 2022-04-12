@@ -51,5 +51,6 @@ class Workout(db.Model):
         self.user_id = user_id
     
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.Title} --- Lift: {self.lift} -- Sets: {self.sets} -- Reps: {self.reps}"
+        return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
+        # --- Lift: {self.lift} -- Sets: {self.sets} -- Reps: {self.reps}"
 
