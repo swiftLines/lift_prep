@@ -9,6 +9,8 @@ from flask_login import LoginManager
 # Linking and registering blog_posts views Blueprint
 from myapp.lift_posts.views import lift_posts
 app.register_blueprint(lift_posts)
+from myapp.core.views import core 
+app.register_blueprint(core)
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
