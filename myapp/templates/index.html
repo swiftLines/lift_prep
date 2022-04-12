@@ -8,11 +8,11 @@
             <div class="card">
                 <div class="car-boy">
                     <h2>
-                        <a class="card-title" href="{{url_for('lift_posts.lift_post', lift_post_id=post.id)}}">{{workout.title}}</a>
-                        <a href="{{url_for('users.user_posts', username=post.author.username)}}">Written by: {{workout.author.username}}</a>
+                        <a class="card-title" href="{{url_for('lift_posts.lift_post', lift_post_id=workout.id)}}">{{workout.title}}</a>
+                        <a href="{{url_for('users.user_posts', username=workout.author.username)}}">Written by: {{workout.author.username}}</a>
                     </h2>
                     <p>Workout Date: {{workout.date.strftime('%Y - %m - %d')}}</p>
-                    <a class="btn btn-primary" href="{{url_for('lift_posts.lift_post', lift_post_id=post.id)}}">Read Lift Post</a>
+                    <a class="btn btn-primary" href="{{url_for('lift_posts.lift_post', lift_post_id=workout.id)}}">Read Lift Post</a>
                 </div>
             </div>
         {% endfor %}
