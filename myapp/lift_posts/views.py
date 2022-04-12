@@ -46,3 +46,16 @@ def update(lift_post_id):
         form.text.data = lift_post.text
 
     return render_template('create_post.html',title='Updating',form=form)
+
+@lift_posts.route('/<int:lift_post_id>/delete',methods=['GET','POST'])
+@login_required
+def delete_post(lift_post_id):
+
+    lift_post = Workout.query.get_or_404(lift_post_id)
+    if lift_post.author != current_user:
+        abort(403)
+
+    db.session.delete(lift_post)
+    db.session.commit()
+    flash('Lift Post Deleted')
+    return redirect(url_for('core.index'))
