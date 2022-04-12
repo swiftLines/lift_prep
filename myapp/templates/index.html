@@ -11,7 +11,7 @@
                         <a class="card-title" href="{{url_for('lift_posts.lift_post', lift_post_id=post.id)}}">{{workout.title}}</a>
                         <a href="{{url_for('users.user_posts', username=post.author.username)}}">Written by: {{workout.author.username}}</a>
                     </h2>
-                    <p>Published on: {{workout.date.strftime('%Y - %m - %d')}}</p>
+                    <p>Workout Date: {{workout.date.strftime('%Y - %m - %d')}}</p>
                     <a class="btn btn-primary" href="{{url_for('lift_posts.lift_post', lift_post_id=post.id)}}">Read Lift Post</a>
                 </div>
             </div>
