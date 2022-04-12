@@ -18,3 +18,8 @@ def create_post():
         print('Workout was created')
         return redirect(url_for('core.index'))
     return render_template('create_post.html', form=form)
+
+@lift_posts.route('/<int:lift_post_id>')
+def lift_post(lift_post_id):
+    lift_post = Workout.query.get_or_404(lift_post_id) 
+    return render_template('lift_post.html', title=lift_post.title, date=lift_post.date, post=lift_post)
