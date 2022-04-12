@@ -11,7 +11,7 @@ lift_posts = Blueprint('lift_posts', __name__)
 def create_post():
     form = LiftPostForm()
     if form.validate_on_submit():
-        lift_post = Workout(title=form.title.data, text=form.text.data, user_id=current_user.id)
+        lift_post = Workout(title=form.title.data, lift=form.lift.data, user_id=current_user.id)
         db.session.add(lift_post)
         db.session.commit()
         flash('Lift Post Created')

@@ -6,11 +6,6 @@ import os
 from os import environ, path 
 from flask_migrate import Migrate
 from flask_login import LoginManager
-# Linking and registering blog_posts views Blueprint
-from myapp.lift_posts.views import lift_posts
-app.register_blueprint(lift_posts)
-from myapp.core.views import core 
-app.register_blueprint(core)
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -41,9 +36,6 @@ login_manager.init_app(app)
 login_manager.login_view = 'users.login'
 
 
-
-
-
 # Registering Blueprints - 
 
 from myapp.core.views import core 
@@ -57,3 +49,7 @@ app.register_blueprint(error_pages)
 #linking users views Blueprint
 from myapp.users.views import users
 app.register_blueprint(users)
+
+# Linking and registering blog_posts views Blueprint
+from myapp.lift_posts.views import lift_posts
+app.register_blueprint(lift_posts)
