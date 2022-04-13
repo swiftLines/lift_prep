@@ -3,20 +3,22 @@
     <div class="container">
         <div class="jumbotron">
             <div align="center">
-                <h1>Welcome to the page for {{user.username}}</h1>
+                <h1>{{user.username}}'s program</h1>
             </div>
         </div>
      {% for post in lift_posts.items %}
     <h2>
         <a href="{{url_for('lift_posts.lift_post', lift_post_id=post.id)}}">{{post.title}}</a>
     </h2>
-    Written By: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a>
+    <!-- Written By: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a> -->
 
     <p class="text-muted">
-        Published On: {{post.date.strftime("%y-%m-%d")}}
+        Workout Date: {{post.date.strftime("%y-%m-%d")}}
     </p>
     <br>
-    <p>{{post.text}}</p>
+    <!-- <p>{{post.lift}}</p>
+    <p>sets: {{post.sets}}</p>
+    <p>reps: {{post.reps}}</p> -->
     <br>
     {% endfor %}
     </div>
