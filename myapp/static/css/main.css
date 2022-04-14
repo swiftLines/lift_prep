@@ -26,3 +26,11 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox=
   font-size: 16px;
   min-height: 100vh;
 }
+
+.nav {
+  background-color: black;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
