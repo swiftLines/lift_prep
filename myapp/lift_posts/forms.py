@@ -10,8 +10,8 @@ from wtforms.validators import DataRequired
 class LiftPostForm(FlaskForm):
     date = DateField('Date', validators=[DataRequired()])
     title = StringField('Title', validators=[DataRequired()])
-    # lifts = FieldList(FormField(ProgramForm), min_entries=10)
-    lift = FieldList(TextAreaField('Lift', validators=[DataRequired()]))
+    # lifts = FieldList(FormField(ProgramForm), max_entries=10)
+    lift = TextAreaField('Lift', validators=[DataRequired()])
     sets = IntegerField('Sets')
     reps = IntegerField('Reps')
     submit = SubmitField('Post')
