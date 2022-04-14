@@ -5,7 +5,6 @@ from myapp.models import Workout
 from myapp.lift_posts.forms import LiftPostForm
 
 lift_posts = Blueprint('lift_posts', __name__)
-# exer_list = Blueprint('exer_list', )
 
 @lift_posts.route('/create', methods=['GET', 'POST'])
 @login_required
