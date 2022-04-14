@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, request, redirect, Blueprint, abort
 from flask_login import current_user, login_required
 from myapp import db 
-from myapp.models import Workout, Exercise
+from myapp.models import Workout
 from myapp.lift_posts.forms import LiftPostForm
 
 lift_posts = Blueprint('lift_posts', __name__)
@@ -12,8 +12,7 @@ lift_posts = Blueprint('lift_posts', __name__)
 def create_post():
     form = LiftPostForm()
     if form.validate_on_submit():
-        lift_post = Workout(date=form.date.data, title=form.title.data, user_id=current_user.id), 
-        # Exercise(lift=form.lift.data, sets=form.sets.data, reps=form.reps.data, workout_id=id.data)
+        lift_post = Workout(date=form.date.data, title=form.title.data, user_id=current_user.id)
         db.session.add(lift_post)
         db.session.commit()
         flash('Lift Post Created')

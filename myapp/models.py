@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #allows to set up isAuthenticate etc 
 from flask_login import UserMixin
 from datetime import datetime
+from sqlalchemy.dialects.postgresql import ARRAY
 
 #login management 
 # allows us to use this in templates for isUser stuff 
@@ -37,32 +38,23 @@ class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
     title = db.Column(db.String(32), nullable=False)
-    posts = db.relationship('Exercise', backref='author', lazy=True)
+    lift = db.Column(db.String(32), nullable=False)
+    sets = db.Column(db.Integer)
+    reps = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, date, title, user_id):
+    # mytable = Table("mytable", metadata,
+    #     Column("data", postgresql.ARRAY(Integer, dimensions=2))
+    # )
+
+    def __init__(self, date, title, lift, sets, reps, user_id):
         self.date = date
         self.title = title
+        self.lift = lift
+        self.sets = sets
+        self.reps = reps
         self.user_id = user_id
     
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
         # --- Lift: {self.lift} -- Sets: {self.sets} -- Reps: {self.reps}"
-
-class Exercise(db.Model):
-    __tablename__ = 'lifts'
-    id = db.Column(db.Integer, primary_key=True)
-    # date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    lift = db.Column(db.String(32), nullable=False)
-    sets = db.Column(db.Integer)
-    reps = db.Column(db.Integer)
-    workout_id = db.Column(db.Integer, db.ForeignKey('workouts.id'), nullable=False)
-
-    def __init__(self, lift, sets, reps, workout_id):
-        self.lift = lift
-        self.sets = sets
-        self.reps = reps
-        self.workout_id = workout_id
-    
-    def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.lift}"
