@@ -12,6 +12,8 @@
               {{form.title.label(class="form-control-label")}}
               {{form.title(class="form-control form-control-lg")}}
           </div>
+          <!-- {% for field in form.lifts %}
+              {{ renderfield(field) }} -->
           <div class="form-group">
             {{form.lift.label(class="form-control-label")}}
             {{form.lift(class="form-control form-control-lg")}}
@@ -24,6 +26,7 @@
             {{form.reps.label(class="form-control-label")}}
             {{form.reps(class="form-control form-control-lg")}}
           </div>
+          <!-- {% endfor %} -->
         <div class="form-group">
             {{form.submit(class="btn btn-outline-info")}}
         </div>

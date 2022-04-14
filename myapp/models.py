@@ -33,24 +33,36 @@ class User(db.Model, UserMixin):
         return f"Username {self.username}"
 
 class Workout(db.Model):
-    __tablename__ = 'workout'
+    __tablename__ = 'workouts'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
     title = db.Column(db.String(32), nullable=False)
-    lift = db.Column(db.Text, nullable=False)
-    sets = db.Column(db.Integer)
-    reps = db.Column(db.Integer)
+    posts = db.relationship('Exercise', backref='author', lazy=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, date, title, lift, sets, reps, user_id):
+    def __init__(self, date, title, user_id):
         self.date = date
         self.title = title
-        self.lift = lift
-        self.sets = sets
-        self.reps = reps
         self.user_id = user_id
     
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
         # --- Lift: {self.lift} -- Sets: {self.sets} -- Reps: {self.reps}"
 
+class Exercise(db.Model):
+    __tablename__ = 'lifts'
+    id = db.Column(db.Integer, primary_key=True)
+    # date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    lift = db.Column(db.String(32), nullable=False)
+    sets = db.Column(db.Integer)
+    reps = db.Column(db.Integer)
+    workout_id = db.Column(db.Integer, db.ForeignKey('workouts.id'), nullable=False)
+
+    def __init__(self, lift, sets, reps, workout_id):
+        self.lift = lift
+        self.sets = sets
+        self.reps = reps
+        self.workout_id = workout_id
+    
+    def __repr__(self):
+        return f"Post ID: {self.id} -- Date: {self.lift}"
