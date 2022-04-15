@@ -34,3 +34,12 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox=
   justify-content: center;
   align-items: center; 
 }
+
+.container {
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
