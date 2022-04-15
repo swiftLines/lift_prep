@@ -10,7 +10,7 @@
                     <h2>
                         <p>Workout On: {{workout.date.strftime('%Y - %m - %d')}}</p>
                         <p class="card-title" >{{workout.title}}</p>
-                        <a href="{{url_for('users.user_posts', username=workout.author.username)}}">Created by: {{workout.author.username}}</a>
+                        Created by: <a href="{{url_for('users.user_posts', username=workout.author.username)}}">{{workout.author.username}}</a>
                     </h2>
                     <a class="btn btn-primary" href="{{url_for('lift_posts.lift_post', lift_post_id=workout.id)}}">Details</a>
                 </div>
