@@ -43,3 +43,9 @@ background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox=
   flex-wrap: wrap;
 }
 
+.jumbotron {
+  background-color: white;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: .3rem;
+}
