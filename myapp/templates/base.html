@@ -16,26 +16,26 @@
         <li class="nav-link">
             <a href="{{url_for('core.index')}}">Home</a>
         </li>
-        <li class="nav-link">
+        <!-- <li class="nav-link">
             <a href="{{url_for('core.info')}}">About</a>
-        </li>
+        </li> -->
 
         {% if current_user.is_authenticated %}
         <li class="nav-link">
-            <a href="{{url_for('users.logout')}}">Log Out</a>
+            <a href="{{url_for('lift_posts.create_post')}}">Create Workout</a> 
         </li>
         <li class="nav-link">
             <a href="{{url_for('users.account')}}">Account</a>
         </li>
         <li class="nav-link">
-            <a href="{{url_for('lift_posts.create_post')}}">Create Workout</a> 
+            <a href="{{url_for('users.logout')}}">Log Out</a>
         </li>
         {% else %}
         <li class="nav-link">
-            <a href="{{url_for('users.login')}}">Log In</a>
+            <a href="{{url_for('users.register')}}">Register</a>
         </li>
         <li class="nav-link">
-            <a href="{{url_for('users.register')}}">Register</a>
+            <a href="{{url_for('users.login')}}">Log In</a>
         </li>
         {% endif %}
     </ul>

@@ -74,5 +74,5 @@ def account():
 def user_posts(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
-    lift_posts = Workout.query.filter_by(author=user).order_by(Workout.date.desc()).paginate(page=page, per_page=12) 
+    lift_posts = Workout.query.filter_by(author=user).order_by(Workout.date.asc()).paginate(page=page, per_page=12) 
     return render_template('user_lift_posts.html', lift_posts=lift_posts, user=user)
