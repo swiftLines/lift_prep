@@ -1,27 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
-        <div class="jumbotron">
-            <div align="center">
-                <h1>{{user.username}}'s program</h1>
+<div class="jumbotron">
+    <h1>{{user.username}}'s program</h1>
+</div>
+<div class="container">
+    {% for workout in lift_posts.items %}
+        <div class="card">
+            <div class="car-boy">
+                <h2>
+                    <p>Workout On: {{workout.date.strftime('%Y - %m - %d')}}</p>
+                    <p class="card-title" >{{workout.title}}</p>
+                    <p>Created by: {{workout.author.username}}</p>
+                </h2>
+                <a class="btn btn-primary" href="{{url_for('lift_posts.lift_post', lift_post_id=workout.id)}}">Details</a>
             </div>
         </div>
-     {% for post in lift_posts.items %}
-    <h2>
-        <a href="{{url_for('lift_posts.lift_post', lift_post_id=post.id)}}">{{post.title}}</a>
-    </h2>
-    <!-- Written By: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a> -->
-
-    <p class="text-muted">
-        Workout Date: {{post.date.strftime("%y-%m-%d")}}
-    </p>
-    <br>
-    <!-- <p>{{post.lift}}</p>
-    <p>sets: {{post.sets}}</p>
-    <p>reps: {{post.reps}}</p> -->
-    <br>
     {% endfor %}
-    </div>
+</div>
 
     <nav aria-label="Page Navigation example">
         <ul class="pagination justify-content-center">
