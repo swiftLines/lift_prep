@@ -23,6 +23,8 @@ With Lift Prep users can prepare and schedule their workout regimen. A user can 
 ## Icebox 
 
 - Allow users to add more than one exercise per workout
+- Allow users to select previous workouts to place back into their program
+- Have a drop down of past exercises for creating a workout
 - Allow users to add friends and friend category such as coach
 - Allow user to select friends workouts and add them to their own program
 - If user is a friend in the coach category allow them to add workouts users programs 
