@@ -8,7 +8,7 @@ core = Blueprint('core', __name__)
 @core.route('/')
 def index():
     page = request.args.get('page', 1, type=int)
-    lift_posts = Workout.query.order_by(Workout.date.asc()).paginate(page=page, per_page=5)
+    lift_posts = Workout.query.order_by(Workout.date.asc()).paginate(page=page, per_page=12)
     return render_template('index.html', lift_posts=lift_posts)
 
 @core.route('/info')
